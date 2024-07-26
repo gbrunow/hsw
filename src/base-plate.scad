@@ -1,5 +1,5 @@
-include <libs/BOSL2/std.scad>
-include <libs/BOSL2/screws.scad>
+include <../libs/BOSL2/std.scad>
+include <../libs/BOSL2/screws.scad>
 
 // Original OpenSCAD model
 // https://www.printables.com/model/163200-openscad-parameterized-honeycomb-storage-wall
