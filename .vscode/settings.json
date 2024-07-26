@@ -1,0 +1,10 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+        {
+            "match": "\\.scad$", 
+            "cmd": "${workspaceFolder}/.dev/scadformat ${file} && find src -type f -name '*.scadbak' -exec rm {} +",
+        }
+    ]
+  },
+}
