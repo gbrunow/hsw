@@ -11,6 +11,9 @@ Max_Plate_Width = 100;
 // Max plate height in millimeters. Only used when in "Max Dimensions" mode.
 Max_Plate_Height = 100;
 
+/* [ Stack Printing ] */
+// Number of plates to be generated for stack printing
+Plate_Count = 3;
 
 /* [ Flat edges ] */
 Left = false;
@@ -26,6 +29,8 @@ depth = 8;
 inner_short_diagonal = 20;
 // Thickness of the wall forming each hexagon
 wall_thickness = 1.8;
+// Gap so the plates don't bind to one another
+stack_printing_gap = 0.2;
 
 // Edges
 edge_left = Left;
@@ -129,4 +134,7 @@ module plate(height, inner_short_diagonal, wall_width) {
 }
 
 translate([edge_left ? 0 : outer_radius, edge_top ? 0 : -outer_short_diagonal / 2, 0])
-  plate(depth, inner_short_diagonal, wall_thickness);
+  for(i = [0:Plate_Count - 1]) {
+    translate([0, 0, i * (depth + stack_printing_gap)])
+      plate(depth, inner_short_diagonal, wall_thickness);
+  }
