@@ -19,12 +19,6 @@ rm -rf libs
 mkdir libs
 cd libs
 
-# BOSL2 does not have formal releases
-# - checkout library on whatever state was on July 19th 2024
-git clone https://github.com/BelfrySCAD/BOSL2.git
-cd BOSL2
-git checkout 8383d360cceddd447cb25e4564d8a3b363f5fd82
-
 # ****************************
 # *     dev dependencies     *
 # ****************************
