@@ -48,8 +48,8 @@ total_height = outer_short_diagonal * max_grid_hexagons_y;
 
 module wall(height, wall_thickness, length) {
   wall_height = height;
-  back_fillet_start = 5.1;
-  back_fillet_end = wall_height - 2;
+  back_fillet_start = wall_height - 5.1;
+  back_fillet_end = 2;
   wall_bottom_thickness = wall_thickness;
   wall_top_thickness = wall_thickness - 1;
   front_fillet_size = 0.5;
@@ -59,11 +59,11 @@ module wall(height, wall_thickness, length) {
       polygon([
         [0, 0], 
         [0, wall_height], 
-        [wall_top_thickness, wall_height], 
-        [wall_top_thickness, back_fillet_end], 
+        [wall_bottom_thickness - front_fillet_size, wall_height], 
+        [wall_bottom_thickness, wall_height - front_fillet_size], 
         [wall_bottom_thickness, back_fillet_start], 
-        [wall_bottom_thickness, front_fillet_size], 
-        [wall_bottom_thickness - front_fillet_size, 0]
+        [wall_top_thickness, back_fillet_end], 
+        [wall_top_thickness, 0]
       ]);
 }
 
