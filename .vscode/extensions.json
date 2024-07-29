@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "antyos.openscad",
-    "emeraldwalk.runonsave"
+    "emeraldwalk.runonsave",
+    "leathong.openscad-language-support"
   ]
 }
