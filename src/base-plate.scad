@@ -123,9 +123,9 @@ module plate(height, inner_short_diagonal, wall_width) {
       y = -(outer_short_diagonal) * (row + (col % 2) / 2);
 
       left = edge_left && col == 0;
-      top = edge_top && row == 0 && col % 2 == (flip_staggering ? 1 : 0);
+      top = edge_top && row == 0 && col % 2 == 0;
       right = edge_right && col == max_grid_hexagons_x - 1;
-      bottom = edge_bottom && row + 1 == max_grid_hexagons_y && -y + outer_short_diagonal > total_height + 0.001 && -y + outer_short_diagonal / 2 <= total_height;
+      bottom = edge_bottom && (row + 1) == max_grid_hexagons_y && (outer_short_diagonal - y) > total_height + 0.001 && (outer_short_diagonal - y) / 2 <= total_height;
 
       translate([x, y, 0])
         cell(height, outer_radius, wall_width, inner_short_diagonal, left, top, right, bottom);
@@ -134,7 +134,7 @@ module plate(height, inner_short_diagonal, wall_width) {
 }
 
 translate([edge_left ? 0 : outer_radius, edge_top ? 0 : -outer_short_diagonal / 2, 0])
-  for(i = [0:Plate_Count - 1]) {
+  for(i = [0:max(Plate_Count - 1, 0)]) {
     translate([0, 0, i * (depth + stack_printing_gap)])
       plate(depth, inner_short_diagonal, wall_thickness);
   }
